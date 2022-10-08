@@ -1,5 +1,6 @@
 // import fs from 'fs/promises'
 // import path from 'path'
+import wx from 'wx'
 
 // async function main() {
 //     const data = await fs.readFile(path.join(__dirname, '../package.json'));
@@ -37,6 +38,8 @@ async function fatisfyMain() {
     console.log('server is listening on 127.0.0.1:3000')
 }
 fatisfyMain()
+
+console.log(wx.getMsg('1234'))
 
 
 
