@@ -7,7 +7,8 @@
   "scripts": {
     "build": "tsc",
     "dev": "ts-node src/index.ts",
-    "ssr":"ts-node src/server-render.ts" 
+    "ssr": "ts-node src/server-render.ts",
+    "vue-ssr": "ts-node src/vue-ssr.ts"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +24,7 @@
     "@types/node": "^18.8.3",
     "ejs": "^3.1.8",
     "fastify": "^4.7.0",
-    "koa": "^2.13.4"
+    "koa": "^2.13.4",
+    "vue": "^3.2.40"
   }
 }
