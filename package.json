@@ -6,18 +6,22 @@
   "type": "out/data-type.d.ts",
   "scripts": {
     "build": "tsc",
-    "dev": "ts-node src/index.ts"
+    "dev": "ts-node src/index.ts",
+    "ssr":"ts-node src/server-render.ts" 
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/ejs": "^3.1.1",
     "ts-node": "^10.9.1",
     "typescript": "^4.8.4"
   },
   "dependencies": {
+    "@fastify/view": "^7.1.0",
     "@types/koa": "^2.13.5",
     "@types/node": "^18.8.3",
+    "ejs": "^3.1.8",
     "fastify": "^4.7.0",
     "koa": "^2.13.4"
   }
