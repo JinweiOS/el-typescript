@@ -2,10 +2,16 @@
 import { createSSRApp } from 'vue'
 // Vue 的服务端渲染 API 位于 `vue/server-renderer` 路径下
 import { renderToString } from 'vue/server-renderer'
+import FastStatic from '@fastify/static'
+import Path from 'path'
 
 import Fastify from 'fastify'
 const server = Fastify({
     logger: true
+})
+
+server.register(FastStatic, {
+  root: Path.join(__dirname, '.'),
 })
 
 server.get('/', (req, res) => {
@@ -19,15 +25,23 @@ server.get('/', (req, res) => {
 
     renderToString(app).then((html) => {
         res.header('Content-Type', 'text/html; charset=utf-8').send(`
-      <!DOCTYPE html>
-      <html>
-        <head>
-          <title>Vue SSR Example</title>
-        </head>
-        <body>
-          <div id="app">${html}</div>
-        </body>
-      </html>
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <title>Vue SSR Example</title>
+            <script type="importmap">
+              {
+                "imports": {
+                  "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+                }
+              }
+            </script>
+            <script type="module" src="/client.js"></script>
+          </head>
+          <body>
+            <div id="app">${html}</div>
+          </body>
+        </html>
       `)
     })
 })
